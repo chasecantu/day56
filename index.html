@@ -1,20 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Teachable Machine Boilerplate</title>
 
-		<base href="/1541/">
+    <!-- <base href="/1521/"> -->
 
        <script type="text/javascript">
-       	//FIXME
+        //FIXME
         document.head.innerHTML = document.head.innerHTML + "<base href='" + document.location.href + "' />";
     </script>
 </head>
 <body>
-
-	<script src="dist/build.js"></script>
+    <div style="margin-bottom: 10px;"><button id = "Takeoff">Takeoff</button>
+    <button id = "Land">Land</button>
+    <button id = "Flip">Flip</button>
+    <button id = "Idle">Idle</button></div>
+<div id = "status">status...</div>
+  <script src="dist/build.js"></script>
 </body>
 </html>

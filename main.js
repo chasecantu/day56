@@ -18,11 +18,34 @@ import * as tf from '@tensorflow/tfjs';
 import * as knnClassifier from '@tensorflow-models/knn-classifier';
 
 // Number of classes to classify
-const NUM_CLASSES = 3;
+const NUM_CLASSES = 4;
 // Webcam Image size. Must be 227. 
 const IMAGE_SIZE = 227;
 // K value for KNN
 const TOPK = 10;
+
+
+document.getElementById("Takeoff").onclick = function() {myTakeoff()};
+
+function myTakeoff() {
+  document.getElementById("status").innerHTML = "Takeoff";
+}
+document.getElementById("Land").onclick = function() {myLand()};
+
+function myLand() {
+  document.getElementById("status").innerHTML = "Land";
+}
+document.getElementById("Flip").onclick = function() {myFlip()};
+
+function myFlip() {
+  document.getElementById("status").innerHTML = "Flip";
+}
+document.getElementById("Idle").onclick = function() {myIdle()};
+
+function myIdle() {
+  document.getElementById("status").innerHTML = "Idle";
+}
+
 
 
 class Main {
@@ -137,6 +160,31 @@ class Main {
           // Update info text
           if (exampleCount[i] > 0) {
             this.infoTexts[i].innerText = ` ${exampleCount[i]} examples - ${res.confidences[i] * 100}%`
+          
+            if(res.confidences[i]>.95){
+              console.log(i,res.confidences[i])
+               if(i==0){
+                var status = document.getElementById("status");
+                status.innerText = "idle"
+              }
+
+
+              if(i==1){
+                var status = document.getElementById("status");
+                status.innerText = "takeoff"
+              }
+              if(i==2){
+                var status = document.getElementById("status");
+                status.innerText = "flip"
+              }
+                  if(i==3){
+                var status = document.getElementById("Status");
+                status.innerText = "Forward"
+              }
+            }
+
+
+
           }
         }
       }
